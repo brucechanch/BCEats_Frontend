@@ -4,6 +4,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useFormContext } from 'react-hook-form'
@@ -27,6 +28,7 @@ const DetailsSection = () => {
             <FormControl>
               <Input {...field} className='bg-white' />
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />
@@ -35,11 +37,12 @@ const DetailsSection = () => {
           control={control}
           name='city'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='flex-1'>
               <FormLabel>City</FormLabel>
               <FormControl>
                 <Input {...field} className='bg-white' />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -47,11 +50,12 @@ const DetailsSection = () => {
           control={control}
           name='country'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='flex-1'>
               <FormLabel>Country</FormLabel>
               <FormControl>
                 <Input {...field} className='bg-white' />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -65,6 +69,7 @@ const DetailsSection = () => {
             <FormControl>
               <Input {...field} className='bg-white' placeholder='40' />
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />
@@ -77,6 +82,7 @@ const DetailsSection = () => {
             <FormControl>
               <Input {...field} className='bg-white' placeholder='30' />
             </FormControl>
+            <FormMessage />
           </FormItem>
         )}
       />

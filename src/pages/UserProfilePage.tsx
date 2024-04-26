@@ -1,4 +1,4 @@
-import UserProfileForm from '@/form/user-profile-form/UserProfileForm'
+import UserProfileForm from '@/forms/user-profile-form/UserProfileForm'
 
 import { useGetMyUser, useUpdateMyUser } from '@/api/MyUserApi'
 
