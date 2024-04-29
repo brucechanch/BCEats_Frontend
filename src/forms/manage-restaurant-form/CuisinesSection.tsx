@@ -1,6 +1,13 @@
-import { cuisineList } from '@/comfig/restaurant-options-config'
-import { FormDescription, FormField, FormItem } from '@/components/ui/form'
+import {
+  FormDescription,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/ui/form'
+
 import { useFormContext } from 'react-hook-form'
+import CuisineCheckbox from './CuisineCheckbox'
+import { cuisineList } from '@/comfig/restaurant-options-config'
 
 const CuisinesSection = () => {
   const { control } = useFormContext()
@@ -18,11 +25,12 @@ const CuisinesSection = () => {
         name='cuisines'
         render={({ field }) => (
           <FormItem>
-            <div className='gird md:grid-cols-5 gap-1'>
+            <div className='grid md:grid-cols-5 gap-1'>
               {cuisineList.map((cuisineItem) => (
                 <CuisineCheckbox cuisine={cuisineItem} field={field} />
               ))}
             </div>
+            <FormMessage />
           </FormItem>
         )}
       />
