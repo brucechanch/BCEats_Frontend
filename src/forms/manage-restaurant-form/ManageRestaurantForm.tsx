@@ -2,7 +2,7 @@ import { Form } from '@/components/ui/form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import DetailsSection from './DetailSection'
+// import DetailsSection from './DetailsSection'
 import { Separator } from '@/components/ui/separator'
 import CuisinesSection from './CuisinesSection'
 import MenuSection from './MenuSection'
@@ -15,24 +15,24 @@ import { useEffect } from 'react'
 const formSchema = z
   .object({
     restaurantName: z.string({
-      required_error: 'Restaurant name is required',
+      required_error: 'restaurant name is required',
     }),
     city: z.string({
-      required_error: 'city name is required',
+      required_error: 'city is required',
     }),
     country: z.string({
-      required_error: 'country name is required',
+      required_error: 'country is required',
     }),
     deliveryPrice: z.coerce.number({
-      required_error: 'Delivery price required',
-      invalid_type_error: 'Must be a valid number',
+      required_error: 'delivery price is required',
+      invalid_type_error: 'must be a valid number',
     }),
     estimatedDeliveryTime: z.coerce.number({
-      required_error: 'Estimated Delivery Time required',
-      invalid_type_error: 'Must be a valid number',
+      required_error: 'estimated delivery time is required',
+      invalid_type_error: 'must be a valid number',
     }),
     cuisines: z.array(z.string()).nonempty({
-      message: 'Please select at least one cuisine',
+      message: 'please select at least one item',
     }),
     menuItems: z.array(
       z.object({
@@ -44,7 +44,7 @@ const formSchema = z
     imageFile: z.instanceof(File, { message: 'image is required' }).optional(),
   })
   .refine((data) => data.imageUrl || data.imageFile, {
-    message: 'Either image URL or image file must be provided',
+    message: 'Either image URL or image File must be provided',
     path: ['imageFile'],
   })
 
@@ -73,6 +73,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     const deliveryPriceFormatted = parseInt(
       (restaurant.deliveryPrice / 100).toFixed(2)
     )
+
     const menuItemsFormatted = restaurant.menuItems.map((item) => ({
       ...item,
       price: parseInt((item.price / 100).toFixed(2)),
@@ -112,6 +113,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
         (menuItem.price * 100).toString()
       )
     })
+
     if (formDataJson.imageFile) {
       formData.append(`imageFile`, formDataJson.imageFile)
     }
@@ -125,7 +127,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className='space-y-8 bg-gray-50 p-10 rounded-lg'
       >
-        <DetailsSection />
+        {/* <DetailsSection /> */}
         <Separator />
         <CuisinesSection />
         <Separator />

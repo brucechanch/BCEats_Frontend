@@ -1,12 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './layouts/layout'
 import HomePage from './pages/HomePages'
-import AuthCallBackPage from './pages/AuthCallBackPage'
+import AuthCallbackPage from './pages/AuthCallBackPage'
 import UserProfilePage from './pages/UserProfilePage'
 import ProtectedRoute from './auth/ProtectedRoute'
 import ManageRestaurantPage from './pages/ManageRestaurantPage'
 import SearchPage from './pages/SearchPage'
 import DetailPage from './pages/DetailPage'
+import OrderStatusPage from './pages/OrderStatusPage'
 
 const AppRoutes = () => {
   return (
@@ -14,12 +15,12 @@ const AppRoutes = () => {
       <Route
         path='/'
         element={
-          <Layout showHero={true}>
+          <Layout showHero>
             <HomePage />
           </Layout>
         }
       />
-      <Route path='/auth-callback' element={<AuthCallBackPage />} />
+      <Route path='/auth-callback' element={<AuthCallbackPage />} />
       <Route
         path='/search/:city'
         element={
@@ -28,7 +29,6 @@ const AppRoutes = () => {
           </Layout>
         }
       />
-
       <Route
         path='/detail/:restaurantId'
         element={
@@ -37,8 +37,15 @@ const AppRoutes = () => {
           </Layout>
         }
       />
-
       <Route element={<ProtectedRoute />}>
+        <Route
+          path='/order-status'
+          element={
+            <Layout>
+              <OrderStatusPage />
+            </Layout>
+          }
+        />
         <Route
           path='/user-profile'
           element={

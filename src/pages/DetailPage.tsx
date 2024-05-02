@@ -2,8 +2,8 @@ import { useGetRestaurant } from '@/api/RestaurantApi'
 import MenuItem from '@/components/MenuItem'
 import OrderSummary from '@/components/OrderSummary'
 import RestaurantInfo from '@/components/RestaurantInfo'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { Card, CardFooter } from '@/components/ui/card'
-import { AspectRatio } from '@radix-ui/react-aspect-ratio'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { MenuItem as MenuItemType } from '../types'
@@ -34,6 +34,7 @@ const DetailPage = () => {
       const existingCartItem = prevCartItems.find(
         (cartItem) => cartItem._id === menuItem._id
       )
+
       let updatedCartItems
 
       if (existingCartItem) {
@@ -58,6 +59,7 @@ const DetailPage = () => {
         `cartItems-${restaurantId}`,
         JSON.stringify(updatedCartItems)
       )
+
       return updatedCartItems
     })
   }

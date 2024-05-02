@@ -24,6 +24,7 @@ export const useGetRestaurant = (restaurantId?: string) => {
       enabled: !!restaurantId,
     }
   )
+
   return { restaurant, isLoading }
 }
 

@@ -35,7 +35,10 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
   }, [form, searchQuery])
 
   const handleReset = () => {
-    form.reset({ searchQuery: '' })
+    form.reset({
+      searchQuery: '',
+    })
+
     if (onReset) {
       onReset()
     }
@@ -45,7 +48,7 @@ const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3  ${
+        className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3 ${
           form.formState.errors.searchQuery && 'border-red-500'
         }`}
       >

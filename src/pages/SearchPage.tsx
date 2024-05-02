@@ -5,7 +5,6 @@ import SearchBar, { SearchForm } from '@/components/SearchBar'
 import SearchResultCard from '@/components/SearchResultCard'
 import SearchResultInfo from '@/components/SearchResultInfo'
 import SortOptionDropdown from '@/components/SortOptionDropdown'
-// import { Pagination } from '@/components/ui/pagination'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -73,11 +72,11 @@ const SearchPage = () => {
   }
 
   if (!results?.data || !city) {
-    return <span>No result found</span>
+    return <span>No results found</span>
   }
 
   return (
-    <div className='grid gird-cols-1 lg:grid-cols-[250px_1fr] gap-5'>
+    <div className='grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5'>
       <div id='cuisines-list'>
         <CuisineFilter
           selectedCuisines={searchState.selectedCuisines}
@@ -102,6 +101,7 @@ const SearchPage = () => {
             onChange={(value) => setSortOption(value)}
           />
         </div>
+
         {results.data.map((restaurant) => (
           <SearchResultCard restaurant={restaurant} />
         ))}

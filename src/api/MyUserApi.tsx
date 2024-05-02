@@ -78,7 +78,7 @@ export const useCreateMyUser = () => {
   }
 }
 
-type updateMyUserRequest = {
+type UpdateMyUserRequest = {
   name: string
   addressLine1: string
   city: string
@@ -88,7 +88,7 @@ type updateMyUserRequest = {
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0()
 
-  const updateMyUserRequest = async (formData: updateMyUserRequest) => {
+  const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently()
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -116,7 +116,7 @@ export const useUpdateMyUser = () => {
   } = useMutation(updateMyUserRequest)
 
   if (isSuccess) {
-    toast.success('User Profile Updated !')
+    toast.success('User profile updated!')
   }
 
   if (error) {
